@@ -27,7 +27,7 @@
             <version>${springframework.version}</version>
         </dependency>
 
-        <!-- Spring Security -->
+        <!-- Spring Security dependencies -->
         <!-- we need spring-security-web artifact and spring-security-config artifact-->
         <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
         <dependency>
@@ -42,6 +42,12 @@
             <version>${springsecurity.version}</version>
         </dependency>
 
+        <!-- Add support for Spring security tag libs -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
 
 
         <!-- Servlet, JSP and JSTL support -->
