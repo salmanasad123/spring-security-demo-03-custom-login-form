@@ -36,19 +36,20 @@ it is a different project / different framework -->
         <!-- only show thing content to code to managers, everything in this security:authorize tag will be
          shown for the given access role-->
         <security:authorize access="hasRole('MANAGERS')">
-        <p>
-            <a href="${pageContext.request.contextPath}/leaders"> Leadership Meeting </a>
-                (Only for managers peeps)
-        </p>
+            <p>
+                <a href="${pageContext.request.contextPath}/leaders"> Leadership Meeting </a>
+                    (Only for managers peeps)
+            </p>
 
         </security:authorize>
         <hr>
 
-        <p>
-            <a href="${pageContext.request.contextPath}/systems"> Admin Access </a>
-            (Only for system peeps)
-        </p>
-
+        <security:authorize access="hasRole('ADMIN')">
+            <p>
+                <a href="${pageContext.request.contextPath}/systems"> Admin Access </a>
+                (Only for system peeps)
+            </p>
+        </security:authorize>
         <hr>
 
         <!-- Add a logout button we use a form because all of the logout have to be submitted via a
