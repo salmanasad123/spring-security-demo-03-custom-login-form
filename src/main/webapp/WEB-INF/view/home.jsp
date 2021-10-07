@@ -33,11 +33,15 @@ it is a different project / different framework -->
 
         <hr>
         <!-- add a link to point to /leaders ....,  this is used for managers only managers can access this route -->
+        <!-- only show thing content to code to managers, everything in this security:authorize tag will be
+         shown for the given access role-->
+        <security:authorize access="hasRole('MANAGERS')">
         <p>
             <a href="${pageContext.request.contextPath}/leaders"> Leadership Meeting </a>
                 (Only for managers peeps)
         </p>
 
+        </security:authorize>
         <hr>
 
         <p>

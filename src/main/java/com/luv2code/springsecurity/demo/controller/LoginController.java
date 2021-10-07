@@ -11,4 +11,11 @@ public class LoginController {
         // return "plain-login";
         return "fancy-login";
     }
+
+    // request mapping for /access-denied.jsp
+    // we define this mapping in login controller because it is more related to security
+    @GetMapping("/access-denied")
+    public String showAccessDeniedPage() {
+        return "access-denied";
+    }
 }

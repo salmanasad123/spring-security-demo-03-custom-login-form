@@ -44,12 +44,15 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/leaders/**").hasRole("MANAGERS")
                 .antMatchers("/systems/**").hasRole("ADMIN")
                 .and()
-                .formLogin()
-                .loginPage("/showMyLoginPage")
-                .loginProcessingUrl("/authenticateTheUser")  // this is where spring will submit data for authentication
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/showMyLoginPage")
+                    .loginProcessingUrl("/authenticateTheUser")  // this is where spring will submit data for authentication
+                    .permitAll()
                 .and()
-                .logout()// add support for logout
-                .permitAll();
+                    .logout()// add support for logout
+                    .permitAll()
+                .and()
+                    .exceptionHandling()
+                    .accessDeniedPage("/access-denied");  // request mapping for access denied
     }
 }
