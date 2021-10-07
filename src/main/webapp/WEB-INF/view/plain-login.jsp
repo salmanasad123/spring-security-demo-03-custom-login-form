@@ -4,6 +4,12 @@
 <html>
 <head>
     <title>Custom Login Form</title>
+    <style>
+        .failed {
+            color:red;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -15,7 +21,7 @@
 
     <!-- Check for login error, spring will pass in the error if login is failed-->
     <c:if test="${param.error!=null}">
-        <i>Sorry, You entered invalid username / password</i>
+        <i class="failed">Sorry, You entered invalid username / password</i>
     </c:if>
 
     <!-- name="username" is very important because spring will look for this when processing the form-->
