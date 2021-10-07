@@ -35,7 +35,7 @@
             <div style="padding-top: 30px" class="panel-body">
 
                 <!-- Login Form -->
-                <form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST"
+                <form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST"
                       class="form-horizontal">
 
                     <!-- Place for messages: error, alert etc ... -->
@@ -44,7 +44,6 @@
                             <div>
                                 <!-- Check for login error, spring will pass in the error if login is failed-->
                                 <c:if test="${param.error!=null}">
-                                    <i class="failed">Sorry, You entered invalid username / password</i>
 
                                     <div class="alert alert-danger col-xs-offset-1 col-xs-10">
                                         Invalid username and password.
@@ -80,7 +79,7 @@
                         </div>
                     </div>
 
-                </form>
+                </form:form>
 
             </div>
 
