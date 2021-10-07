@@ -42,6 +42,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/showMyLoginPage")
                     .loginProcessingUrl("/authenticateTheUser")  // this is where spring will submit data for authentication
+                    .permitAll()
+                .and()
+                    .logout()// add support for logout
                     .permitAll();
     }
 }

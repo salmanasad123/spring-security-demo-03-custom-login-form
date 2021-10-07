@@ -36,7 +36,7 @@
 
                 <!-- Login Form -->
                 <form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST"
-                      class="form-horizontal">
+                           class="form-horizontal">
 
                     <!-- Place for messages: error, alert etc ... -->
                     <div class="form-group">
@@ -50,9 +50,14 @@
                                     </div>
                                 </c:if>
 
-                                <div class="alert alert-success col-xs-offset-1 col-xs-10">
-                                    You have been logged out.
-                                </div>
+                                <!-- we check if the we have param.logout because spring security will automatically
+                                append this param when logout button is clicked and it will redirect to login page
+                                 this is all handled by spring security-->
+                                <c:if test="${param.logout != null}">
+                                    <div class="alert alert-success col-xs-offset-1 col-xs-10">
+                                        You have been logged out.
+                                    </div>
+                                </c:if>
 
                             </div>
                         </div>
