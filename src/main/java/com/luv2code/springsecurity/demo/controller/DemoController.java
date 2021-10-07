@@ -10,4 +10,15 @@ public class DemoController {
     public String showHome() {
         return "home"; // it will look for WEB-INF/view/home.jsp
     }
+
+    // add request mapping for /leaders
+    @GetMapping("/leaders")
+    public String showLeadersPage() {
+        return "leaders";
+    }
+
+    @GetMapping("/systems")
+    public String showSystemsPage(){
+        return "systems";
+    }
 }

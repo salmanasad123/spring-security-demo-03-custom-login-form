@@ -25,9 +25,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser(users.username("john").password("test123").roles("EMPLOYEE"));
         auth.inMemoryAuthentication()
-                .withUser(users.username("mary").password("test123").roles("MANAGER"));
+                .withUser(users.username("mary").password("test123").roles("EMPLOYEE", "MANAGERS"));
         auth.inMemoryAuthentication()
-                .withUser(users.username("susan").password("test123").roles("ADMIN"));
+                .withUser(users.username("susan").password("test123").roles("EMPLOYEE","ADMIN"));
     }
 
     // override configure the method that takes http security to reference our custom login form
@@ -36,15 +36,20 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // any request coming in to our app must be authenticated
+        //  .antMatchers("/").hasRole("EMPLOYEE")  --> only user with role employee can access "/"
+        // .antMatchers("/leaders/**").hasRole("MANAGER") --> only user with role manager can access /leaders/**  (** means any)
+
         http.authorizeRequests()
-                .anyRequest().authenticated()
+                .antMatchers("/").hasRole("EMPLOYEE")
+                .antMatchers("/leaders/**").hasRole("MANAGERS")
+                .antMatchers("/systems/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
-                    .loginPage("/showMyLoginPage")
-                    .loginProcessingUrl("/authenticateTheUser")  // this is where spring will submit data for authentication
-                    .permitAll()
+                .loginPage("/showMyLoginPage")
+                .loginProcessingUrl("/authenticateTheUser")  // this is where spring will submit data for authentication
+                .permitAll()
                 .and()
-                    .logout()// add support for logout
-                    .permitAll();
+                .logout()// add support for logout
+                .permitAll();
     }
 }
